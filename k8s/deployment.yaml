@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: real-estate-app
+spec:
+  replicas: 3  # <--- This tells K8s to run 3 copies of the app!
+  selector:
+    matchLabels:
+      app: real-estate
+  template:
+    metadata:
+      labels:
+        app: real-estate
+    spec:
+      containers:
+      - name: real-estate-container
+        image: real-estate-image:latest
+        ports:
+        - containerPort: 5000
