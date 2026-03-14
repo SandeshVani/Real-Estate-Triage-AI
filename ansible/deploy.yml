@@ -1,0 +1,11 @@
+---
+- name: Deploy Real Estate App on AWS
+  hosts: all
+  tasks:
+    - name: Start the Docker Container
+      docker_container:
+        name: real-estate-ai-app
+        image: real-estate-image:latest
+        state: started
+        ports:
+          - "5000:5000"
